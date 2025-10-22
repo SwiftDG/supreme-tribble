@@ -1,86 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Me — HNG Internship</title>
-  <link rel="stylesheet" href="css/main.css">
-</head>
-<body>
-  <main>
-    <section>
-      <form data-testid="test-contact-form" id="contactForm" novalidate>
-        <h1>Contact Me</h1>
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 2rem;
+background: linear-gradient(135deg, #dfd9d9dd, #ebe1e1, #898584);
+background-size: 180% 180%;
+animation: gradient-animation 18s ease infinite;
+}
 
-        <label for="name">Full Name</label>
-        <input type="text" id="name" data-testid="test-contact-name" aria-describedby="error-name">
-        <span id="error-name" data-testid="test-contact-error-name" class="error"></span>
+@keyframes gradient-animation {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
 
-        <label for="email">Email</label>
-        <input type="email" id="email" data-testid="test-contact-email" aria-describedby="error-email">
-        <span id="error-email" data-testid="test-contact-error-email" class="error"></span>
+article[data-testid="test-profile-card"] {
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+max-width: 800px;
+margin: auto;
+text-align: center;
+padding: 1rem;
+background-color: #fff;
+border-radius: 10px;
+display: flex;
+gap: 100px;
+align-items: center;
+justify-content: center;
+}
 
-        <label for="subject">Subject</label>
-        <input type="text" id="subject" data-testid="test-contact-subject" aria-describedby="error-subject">
-        <span id="error-subject" data-testid="test-contact-error-subject" class="error"></span>
+.title {
+color: grey;
+font-size: 18px;
+}
 
-        <label for="message">Message</label>
-        <textarea id="message" rows="5" data-testid="test-contact-message" aria-describedby="error-message"></textarea>
-        <span id="error-message" data-testid="test-contact-error-message" class="error"></span>
+img[data-testid="test-user-avatar"] {
+width: 100%;
+border-radius: 10px;
+}
 
-        <button type="submit" data-testid="test-contact-submit">Submit</button>
-        <p id="successMsg" data-testid="test-contact-success" class="success"></p>
+nav[data-testid="test-user-social-links"] a {
+margin: 0 5px;
+color: rgb(219, 192, 192);
+text-decoration: none;
+padding: 0.5rem;
+border-radius: 0.5rem;
+background: black;
+}
 
-        <div style="text-align:center; margin-top:1rem;">
-          <a href="index.html" aria-label="Back to profile card" style="color: black;">← Back to Profile</a>
-        </div>
-      </form>
-    </section>
-  </main>
+nav[data-testid="test-user-social-links"] a:hover {
+opacity: 0.8;
+}
 
-  <script>
-    const form = document.getElementById('contactForm');
-    const successMsg = document.getElementById('successMsg');
+nav[data-testid="test-user-social-links"] ul {
+display: flex;
+flex-direction: row;
+list-style-type: none;
+}
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      successMsg.textContent = '';
+a[data-testid="test-user-page-links"] {
+margin: 0 5px;
+color: rgb(219, 192, 192);
+border-radius: 0.5rem;
+}
 
-      let valid = true;
+a[data-testid="test-user-page-links"]:hover {
+color: rgb(145, 129, 129);
+}
 
-      const fields = {
-        name: document.getElementById('name'),
-        email: document.getElementById('email'),
-        subject: document.getElementById('subject'),
-        message: document.getElementById('message'),
-      };
+section ul {
+padding-left: 1.2rem;
+text-align: left;
+}
 
-      Object.keys(fields).forEach(key => {
-        document.getElementById(`error-${key}`).textContent = '';
-      });
+.error {
+color: red;
+font-size: 0.9em;
+}
 
-      if (!fields.name.value.trim()) {
-        document.getElementById('error-name').textContent = 'Full name is required';
-        valid = false;
-      }
-      if (!fields.email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.value)) {
-        document.getElementById('error-email').textContent = 'Valid email required';
-        valid = false;
-      }
-      if (!fields.subject.value.trim()) {
-        document.getElementById('error-subject').textContent = 'Subject is required';
-        valid = false;
-      }
-      if (!fields.message.value.trim() || fields.message.value.length < 10) {
-        document.getElementById('error-message').textContent = 'Message must be at least 10 characters';
-        valid = false;
-      }
+.success {
+color: green;
+font-weight: bold;
+}
 
-      if (valid) {
-        successMsg.textContent = 'Message submitted successfully!';
-        form.reset();
-      }
-    });
-  </script>
-</body>
-</html>
+@media screen and (max-width: 600px) {
+article[data-testid="test-profile-card"] {
+max-width: 90%;
+flex-direction: column;
+gap: 1.5rem;
+}
+}
+
+form[data-testid="test-contact-form"] {
+background: linear-gradient(145deg, #ffffff, #f2f2f2);
+max-width: 500px;
+margin: 4rem auto;
+padding: 2.5rem;
+border-radius: 16px;
+box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+display: flex;
+flex-direction: column;
+gap: 1.2rem;
+transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+form[data-testid="test-contact-form"]:hover {
+transform: translateY(-3px);
+box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+form[data-testid="test-contact-form"] h2 {
+text-align: center;
+font-size: 1.8rem;
+margin-bottom: 1rem;
+color: #222;
+letter-spacing: 1px;
+}
+
+form[data-testid="test-contact-form"] label {
+font-weight: 600;
+color: #333;
+font-size: 0.95rem;
+}
+
+form[data-testid="test-contact-form"] input,
+form[data-testid="test-contact-form"] textarea {
+width: 100%;
+border: 1.5px solid #bbb;
+border-radius: 8px;
+padding: 0.9rem;
+font-size: 1rem;
+outline: none;
+transition: border-color 0.3s;
+box-sizing: border-box;
+}
+
+form[data-testid="test-contact-form"] input:focus,
+form[data-testid="test-contact-form"] textarea:focus {
+border-color: black;
+}
+
+form[data-testid="test-contact-form"] textarea {
+resize: vertical;
+min-height: 120px;
+}
+
+form[data-testid="test-contact-form"] button {
+background: linear-gradient(90deg, black, #333);
+color: white;
+border: none;
+padding: 0.9rem;
+border-radius: 10px;
+font-size: 1.05rem;
+letter-spacing: 0.5px;
+cursor: pointer;
+transition: background 0.3s, transform 0.2s;
+}
+
+form[data-testid="test-contact-form"] button:hover {
+background: linear-gradient(90deg, #222, #000);
+transform: translateY(-2px);
+}
+
+@media (max-width: 600px) {
+form[data-testid="test-contact-form"] {
+width: 90%;
+padding: 1.5rem;
+}
+}
+
