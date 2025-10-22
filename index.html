@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HNG Internship — Profile Card</title>
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 
 <body>
+
+  <h2 style="text-align:center">My Profile Card</h2>
+
+
   <article data-testid="test-profile-card">
-    <div class="content">
-      <figure>
-        <img src="images/passport-photograph.png" alt="My avatar" data-testid="test-user-avatar" />
-      </figure>
-      <header>
-        <h2 data-testid="test-user-name" aria-label="User Name">David Gilbert</h2>
-      </header>
+    <div class="flex-left">
+      <img src="images/passport-photograph.png" alt="David Gilbert's avatar" data-testid="test-user-avatar" />
+      <h1 data-testid="test-user-name">David Gilbert</h1>
+    </div>
 
-      <p data-testid="test-user-bio">
-        Frontend and Backend developer in progress. I am enthusiastic about coding, more intuned to interface than to design  .
-      </p>
 
-      <p data-testid="test-user-time" id="timeDisplay">Loading time...</p>
-
-      <nav data-testid="test-user-social-links">
-        <ul>
-          <li><a href="https://x.com/" target="_blank" rel="noopener noreferrer"
-              data-testid="test-user-social-twitter">Twitter</a></li>
-          <li><a href="https://github.com/okondev" target="_blank" rel="noopener noreferrer"
-              data-testid="test-user-social-github">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/okondev" target="_blank" rel="noopener noreferrer"
-              data-testid="test-user-social-facebook">Facebook</a></li>
-        </ul>
-      </nav>
+    <div class="flex-right">
 
       <section>
         <h3>Hobbies</h3>
@@ -52,13 +42,33 @@
           <li>Succumbing to general views</li>
           <li>Code issues</li>
           <li>Overated things</li>
+          <li>Slow Internet</li>
         </ul>
       </section>
+      <p class="title" data-testid="test-user-bio">Frontend and Backend developer in progress. I am enthusiastic about
+        coding, more intuned to interface than to design .</p>
+      <p data-testid="test-user-time" id="timeDisplay">Loading time...</p>
+
+      <nav data-testid="test-user-social-links" class="socials-nav">
+        <ul>
+          <li><a href="https://x.com/" target="_blank" rel="noopener noreferrer"
+              data-testid="test-user-social-twitter">Twitter</a></li>
+          <li><a href="https://github.com/davidg" target="_blank" rel="noopener noreferrer"
+              data-testid="test-user-social-github">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/davidg" target="_blank" rel="noopener noreferrer"
+              data-testid="test-user-social-facebook">Facebook</a></li>
+        </ul>
+      </nav> <br>
+
+      <h4>Know more about me here: <a data-testid="test-user-page-links" href="about.html" target="_blank" rel="noopener noreferrer">About</a> </h4> 
+      <h4>Contact me here: <a data-testid="test-user-page-links" href="contact.html" target="_blank" rel="noopener noreferrer">Contact</a></h4>
+      
     </div>
+
   </article>
 
   <script>
-    document.getElementById("timeDisplay").textContent = Date.now();
+    document.getElementById("timeDisplay").textContent = `Current Time: ${Date.now()}`;
   </script>
 </body>
 
