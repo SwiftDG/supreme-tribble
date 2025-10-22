@@ -8,10 +8,10 @@
 </head>
 <body>
   <main>
-    <article data-testid="test-profile-card" style="flex-direction: column; text-align: left; max-width: 600px;">
-      <h1>Contact Me</h1>
+    <section>
+      <form data-testid="test-contact-form" id="contactForm" novalidate>
+        <h1>Contact Me</h1>
 
-      <form id="contactForm" novalidate>
         <label for="name">Full Name</label>
         <input type="text" id="name" data-testid="test-contact-name" aria-describedby="error-name">
         <span id="error-name" data-testid="test-contact-error-name" class="error"></span>
@@ -30,10 +30,12 @@
 
         <button type="submit" data-testid="test-contact-submit">Submit</button>
         <p id="successMsg" data-testid="test-contact-success" class="success"></p>
-      </form>
 
-      <a href="index.html" aria-label="Back to profile card" style="color: black;">← Back to Profile</a>
-    </article>
+        <div style="text-align:center; margin-top:1rem;">
+          <a href="index.html" aria-label="Back to profile card" style="color: black;">← Back to Profile</a>
+        </div>
+      </form>
+    </section>
   </main>
 
   <script>
@@ -61,7 +63,7 @@
         document.getElementById('error-name').textContent = 'Full name is required';
         valid = false;
       }
-      if (!fields.email.value.trim() || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(fields.email.value)) {
+      if (!fields.email.value.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fields.email.value)) {
         document.getElementById('error-email').textContent = 'Valid email required';
         valid = false;
       }
