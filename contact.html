@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Me — HNG Internship</title>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <main>
+    <article data-testid="test-profile-card" style="flex-direction: column; text-align: left; max-width: 600px;">
+      <h1>Contact Me</h1>
+
+      <form id="contactForm" novalidate>
+        <label for="name">Full Name</label>
+        <input type="text" id="name" data-testid="test-contact-name" aria-describedby="error-name">
+        <span id="error-name" data-testid="test-contact-error-name" class="error"></span>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" data-testid="test-contact-email" aria-describedby="error-email">
+        <span id="error-email" data-testid="test-contact-error-email" class="error"></span>
+
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" data-testid="test-contact-subject" aria-describedby="error-subject">
+        <span id="error-subject" data-testid="test-contact-error-subject" class="error"></span>
+
+        <label for="message">Message</label>
+        <textarea id="message" rows="5" data-testid="test-contact-message" aria-describedby="error-message"></textarea>
+        <span id="error-message" data-testid="test-contact-error-message" class="error"></span>
+
+        <button type="submit" data-testid="test-contact-submit">Submit</button>
+        <p id="successMsg" data-testid="test-contact-success" class="success"></p>
+      </form>
+
+      <a href="index.html" aria-label="Back to profile card" style="color: black;">← Back to Profile</a>
+    </article>
+  </main>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const successMsg = document.getElementById('successMsg');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      successMsg.textContent = '';
+
+      let valid = true;
+
+      const fields = {
+        name: document.getElementById('name'),
+        email: document.getElementById('email'),
+        subject: document.getElementById('subject'),
+        message: document.getElementById('message'),
+      };
+
+      Object.keys(fields).forEach(key => {
+        document.getElementById(`error-${key}`).textContent = '';
+      });
+
+      if (!fields.name.value.trim()) {
+        document.getElementById('error-name').textContent = 'Full name is required';
+        valid = false;
+      }
+      if (!fields.email.value.trim() || !/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(fields.email.value)) {
+        document.getElementById('error-email').textContent = 'Valid email required';
+        valid = false;
+      }
+      if (!fields.subject.value.trim()) {
+        document.getElementById('error-subject').textContent = 'Subject is required';
+        valid = false;
+      }
+      if (!fields.message.value.trim() || fields.message.value.length < 10) {
+        document.getElementById('error-message').textContent = 'Message must be at least 10 characters';
+        valid = false;
+      }
+
+      if (valid) {
+        successMsg.textContent = 'Message submitted successfully!';
+        form.reset();
+      }
+    });
+  </script>
+</body>
+</html>
