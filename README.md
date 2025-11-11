@@ -1,1 +1,1 @@
-A profile card using html, css and js.
+A simple profile card created during HNG STAGE 0 Internship
